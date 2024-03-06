@@ -213,7 +213,7 @@ class LoggerWrapper(
     ): List<TrackerLog> {
         return database.rawQuery("SELECT * FROM tracker_events WHERE timestamp < ? ORDER BY timestamp DESC", arrayOf(lastTimestamp.toString())).use {
             val logs = mutableListOf<TrackerLog>()
-            while (it.moveToNext() && logs.size < 50) {
+            while (it.moveToNext() && logs.size < 5000) {
                 val log = TrackerLog(
                     timestamp = it.getLongOrNull("timestamp") ?: continue,
                     conversationId = it.getStringOrNull("conversation_id") ?: continue,
