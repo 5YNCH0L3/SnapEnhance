@@ -124,7 +124,7 @@ class BulkMessagingAction : AbstractAction() {
         var sortReverseOrder by remember { mutableStateOf(false) }
         val selectedFriends = remember { mutableStateListOf<String>() }
         val friends = remember { mutableStateListOf<FriendInfo>() }
-        val bitmojiCache = remember { EvictingMap<String, Bitmap>(50) }
+        val bitmojiCache = remember { EvictingMap<String, Bitmap>(5000) }
         val noBitmojiBitmap = remember { BitmapFactory.decodeResource(context.resources, android.R.drawable.ic_menu_report_image).asImageBitmap() }
 
         suspend fun refreshList() {
