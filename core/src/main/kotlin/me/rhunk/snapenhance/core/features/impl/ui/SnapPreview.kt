@@ -24,7 +24,7 @@ import java.io.File
 
 class SnapPreview : Feature("SnapPreview", loadParams = FeatureLoadParams.INIT_SYNC or FeatureLoadParams.ACTIVITY_CREATE_SYNC) {
     private val mediaFileCache = EvictingMap<String, File>(500) // mMediaId => mediaFile
-    private val bitmapCache = EvictingMap<String, Bitmap>(50) // filePath => bitmap
+    private val bitmapCache = EvictingMap<String, Bitmap>(5000) // filePath => bitmap
 
     private val isEnabled get() = context.config.userInterface.snapPreview.get()
 
